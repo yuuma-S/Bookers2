@@ -1,0 +1,15 @@
+<!-- <h1>Users#new</h1>
+<p>Find me in app/views/users/new.html.erb</p>
+ -->
+
+ <%= form_for(@user) do |f| %>
+
+ 	<h4>名前</h4>
+ 	<%= f.text_field :name %>
+
+ 	<h4>プロフィール画像</h4>
+ 	<%= f.attachment :profile_image %>
+
+ 	<%= f.submit '保存' %>
+
+ <% end %>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/0617b3186b.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div id="slidemenu">
+          <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
+
+            <% if user_signed_in? %>
+              <li class="social">
+                <%= link_to  user_path(current_user.id) do %>
+                <i class="fas fa-home">Home</i>
+                <% end %>
+              </li>
+
+              <li class="social">
+                <%= link_to  users_path  do %>
+                <i class="fas fa-user">User</i>
+                <% end %>
+              </li>
+
+              <li class="social">
+                <%= link_to books_path do %>
+                <i class="fas fa-book">Book</i>
+                <% end %>
+              </li>
+
+              <li class="social">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt">Logout</i>
+                <% end %>
+              </li>
+
+            <% else %>
+
+              <li class="social">
+                <%= link_to root_path do %>
+              <i class="fas fa-home">Home</i>
+              <% end %>
+              </li>
+
+              <li class="social">
+                <%= link_to home_about_path do %>
+                <i class="fas fa-user">About</i>
+                <% end %>
+              </li>
+
+              <li class="social">
+                <%= link_to new_user_registration_path do %>
+                <i class="fas fa-user-plus">新規登録</i>
+                <% end %>
+              </li>
+
+              <li class="social">
+                <%= link_to new_user_session_path do %>
+              <i class="fas fa-sign-in-alt">ログイン</i>
+              <% end %>
+            </li>
+
+            <% end %>
+          </div>
+        </div>
+      </ul>
+    </div>
+  <%= flash[:notice] %>
+  <%= yield %>
+  </body>
+</html>

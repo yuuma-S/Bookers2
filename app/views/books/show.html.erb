@@ -1,0 +1,50 @@
+
+<%= render 'users/error', book: @book %>
+
+<%#= flash[:notice] %>
+<div class="container">
+  <div class="row">
+    <main class= "box clearfix">
+      <div class= "user-info col-sm-3">
+      	<%= render 'users/list', user: @book.user, books: @book_new %>
+      </div>
+
+
+      <h2>Book detail</h2>
+      <div class="col-sm-9">
+        <table class="table float-lg-right">
+          <thead>
+            <tr>
+              <th></th>
+              <th>title</th>
+              <th>body</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to user_path(@book.user.id) do %>
+                <%= attachment_image_tag @book.user, :profile_image, size: "50x50", fallback: "no_image.jpg" %>
+                <%= @book.user.name %>
+                <% end %>
+              </td>
+
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
+              <% if @book.user == current_user %>
+                <td><%= link_to "削除", book_path(@book), method: :delete %></td>
+                <td><%= link_to "編集", edit_book_path(@book) %></td>
+              <% end %>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+

@@ -1,0 +1,46 @@
+<%= render 'users/error', book: @book %>
+
+
+<div class="container">
+  <div class="row">
+    <main class= "box clearfix">
+    <div class= "user-info col-sm-3">
+    	<%= render 'users/list', user: @user, books: @book %>
+
+    </div>
+
+
+    <h2>Books</h2>
+      <div class="col-sm-9">
+
+        <table class="table float-lg-right">
+          <thead>
+
+              <tr>
+                <th>title</th>
+                <th>body</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @user.books.each do |book| %>
+              <tr>
+                <td>
+                  <%= link_to book_path(book) do %>
+                  <%= book.title %>
+                  <% end %>
+                </td>
+
+                <td><%= book.body %></td>
+              </tr>
+           <% end %>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+
+
