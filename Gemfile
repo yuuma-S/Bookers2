@@ -50,7 +50,7 @@ group :test do
   gem 'webdrivers'
   gem 'rspec-rails'
   gem "factory_bot_rails"
-  gem 'faker', '~> 2.0.0'
+  gem 'faker', '~> 2.8.1'
   gem 'rspec-parameterized'
   gem 'rails-controller-testing'
   gem 'shoulda-matchers'
