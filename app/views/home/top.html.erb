@@ -19,9 +19,15 @@ about various books!
 		</div>
 	</div>
 	<div class="row">
-		<p class="col-md-10 text-center bg-info text-white">
-            <%= link_to "新規登録", new_user_registration_path %></p>
-    <p class="col-md-10 text-center bg-warning text-light">
-            <%= link_to "ログイン", new_user_session_path %></p>
+		<p class="col-md-10">
+	    <%= link_to new_user_registration_path do %>
+	    	<button type="button" class="btn btn-primary btn-lg btn-block">新規登録</button>
+	    <% end %>
+    </p>
+	  <p class="col-md-10 text-center text-black">
+	    <%= link_to new_user_session_path do %>
+	  		<button type="button" class="btn btn-success btn-lg btn-block">ログイン</button>
+	  	<% end %>
+		</p>
 	</div>
 </div>
