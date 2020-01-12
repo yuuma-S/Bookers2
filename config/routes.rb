@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :favorites, only: [:create, :destroy]
   root to: 'home#top'
   get 'home/top'
   get 'home/about'
