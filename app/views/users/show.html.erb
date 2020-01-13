@@ -19,6 +19,7 @@
               <tr>
                 <th>title</th>
                 <th>body</th>
+                <th></th>
             </tr>
           </thead>
           <tbody>
@@ -29,8 +30,8 @@
                   <%= book.title %>
                   <% end %>
                 </td>
-
                 <td><%= book.body %></td>
+                <td><%= book.comments.count %>件のコメント</td>
               </tr>
            <% end %>
 
