@@ -35,12 +35,14 @@
 
               <td>
                 <% if @book.favorited_by?(current_user) %>
-                  <%= button_tag(class: "btn btn-default btn-xs") do %>
-                  <%= content_tag :span, "いいね", class: "glyphicon glyphicon-heart" %>
+                  <%= link_to book_favorites_path(@book.id), method: :delete do %>
+                          <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                        <%= @book.favorites.count %> いいね
                   <% end %>
                 <% else %>
-                  <%= button_tag(class: "btn btn-default btn-xs") do %>
-                  <%= content_tag :span, "いいねされてないよ", class: "glyphicon glyphicon-heart" %>
+                  <%= link_to book_favorites_path(@book.id), method: :post do %>
+                          <i class="fa fa-heart" aria-hidden="true" style="color: black;"></i>
+                        <%= @book.favorites.count %> いいね
                   <% end %>
                 <% end %>
               </td>
@@ -60,7 +62,7 @@
             <%= comment.user.name %></a>
             <%= comment.created_at.strftime('%Y/%m/%d') %>
             <%= comment.comment %>
-            <% if @book.user == current_user %>
+            <% if comment.user.id == current_user.id %>
               <%= link_to "削除", book_comment_path(@book, comment), method: :delete %>
             <% end %>
           <% end %>
