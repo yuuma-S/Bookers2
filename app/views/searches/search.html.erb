@@ -1,0 +1,28 @@
+
+<table>
+	<caption>検索結果</caption>
+	<thead>
+		<tr>
+			<th>header</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+			<% if @model == "user" %>
+				<% @result.each do |result| %>
+					<%= result.name %>
+					<%= result.id %>
+					<%= result.email %>
+				<% end %>
+			<% elsif @model == "book" %>
+
+				<% @result.each do |result| %>
+					<%= result.title %>
+					<%= result.body %>
+				<% end %>
+			<% end %>
+		</td>
+		</tr>
+	</tbody>
+</table>

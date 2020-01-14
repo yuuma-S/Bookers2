@@ -27,13 +27,13 @@
 				<% if user.id != current_user.id %>
 					<% unless user.followed_by?(current_user) %>
 						<tr>
-							<th></th>
-							<td><%= link_to 'フォローする', user_relationships_path(user.id),method: :post, class: "btn btn-default", style: "margin: 30px 0;" %></td>
+							<th>フォロー</th>
+							<td><%= link_to 'する？', user_relationships_path(user.id),method: :post, class: "btn btn-default" %></td>
 						</tr>
 					<% else %>
 						<tr>
-							<th></th>
-							<td><%= link_to 'フォローを外す', user_relationships_path(user.id),method: :destory, class: "btn btn-default", style: "margin: 30px 0;" %></td>
+							<th>フォロー</th>
+							<td><%= link_to 'フォローを外す', user_relationships_path(user.id),method: :destory, class: "btn btn-default" %></td>
 						</tr>
 					<% end %>
 				<% end %>
@@ -42,7 +42,7 @@
 			<% if user.id == current_user.id %>
 				<a class="social">
 					<%= link_to edit_user_path(user.id) do %>
-						<i class="fas fa-user-edit"></i>
+						<i class="fas fa-user-edit btn btn-primary col-xs-12"></i>
 				  <% end %>
 				</a>
 			<% else %>
