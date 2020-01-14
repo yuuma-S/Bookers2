@@ -11,6 +11,13 @@
 
       <h2>Book</h2>
         <div class="col-sm-9">
+          <p>book search</p>
+            <%= form_tag(search_path, :method => 'get' ) do |f| %>
+            <%= text_field_tag :search %>
+            <%= select_tag :model, options_for_select({"user" =>"user","book" =>"book"}) %>
+            <%= select_tag :sort, options_for_select({"キーワード含む" => "1","完全一致" =>"2", "前方一致" =>"3", "後方一致" =>"4" }) %>
+            <%= submit_tag 'Search'%>
+          <% end %>
 
           <table class="table float-lg-right">
             <thead>
