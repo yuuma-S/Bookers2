@@ -18,28 +18,44 @@
 				</tr>
 				<tr>
 					<th>フォロー数</th>
-					<td><%= user.followings.count %></td>
+					<td><%= link_to user.followings.count, follows_user_path(user) %></td>
 				</tr>
+				<tr>
+					<th>フォローワー数</th>
+					<td><%=link_to user.followers.count, followers_user_path(user) %></td>
+				</tr>
+				<% if user.id != current_user.id %>
+					<% unless user.followed_by?(current_user) %>
+						<tr>
+							<th></th>
+							<td><%= link_to 'フォローする', user_relationships_path(user.id),method: :post, class: "btn btn-default", style: "margin: 30px 0;" %></td>
+						</tr>
+					<% else %>
+						<tr>
+							<th></th>
+							<td><%= link_to 'フォローを外す', user_relationships_path(user.id),method: :destory, class: "btn btn-default", style: "margin: 30px 0;" %></td>
+						</tr>
+					<% end %>
+				<% end %>
 			</table>
 
 			<% if user.id == current_user.id %>
-				<li class="social">
+				<a class="social">
 					<%= link_to edit_user_path(user.id) do %>
 						<i class="fas fa-user-edit"></i>
 				  <% end %>
-				</li>
+				</a>
 			<% else %>
-				<li class="social">
+				<a class="social">
 				　<%= link_to user_path(current_user.id) do %>
-					　<i class="fas fa-user-edit"></i>
+					　<i class="fas fa-user-edit btn btn-primary col-xs-12"></i>
 				　<% end %>
-				</li>
+				</a>
 			<% end %>
 
 				<!-- 現在ログインしているユーザーかどうか
-					edit_pathに飛ぶ
-				ちがう
-					showにとぶ -->
+				edit_pathに飛ぶ
+				ちがうshowにとぶ -->
 
 			<%= form_for(books) do |f| %>
 				<h2>new book</h2>
