@@ -1,28 +1,34 @@
 
-<table>
+<table class="table">
 	<caption>検索結果</caption>
 	<thead>
 		<tr>
-			<th>header</th>
+			<th>一覧</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>
-			<% if @model == "user" %>
-				<% @result.each do |result| %>
-					<%= result.name %>
-					<%= result.id %>
-					<%= result.email %>
-				<% end %>
-			<% elsif @model == "book" %>
-
-				<% @result.each do |result| %>
-					<%= result.title %>
-					<%= result.body %>
-				<% end %>
+		<% if @model == "user" %>
+			<% @result.each do |result| %>
+			<tr>
+				<td>
+					<%= link_to result do %>
+						<%= result.name %>
+						<%= attachment_image_tag(result, :profile_image, size: "50x50", fallback: "no-image-icon.jpg") %>
+						<%= result.id %>
+						<%= result.email %>
+					<% end %>
+				</td>
+			</tr>
 			<% end %>
-		</td>
-		</tr>
+		<% elsif @model == "book" %>
+			<tr>
+				<td>
+			<% @result.each do |result| %>
+				<%= result.title %>
+				<%= result.body %>
+			<% end %>
+				</td>
+			</tr>
+		<% end %>
 	</tbody>
 </table>
